@@ -19,6 +19,8 @@ volumes:
   peer2.hr.workspace:
   peer1.marketing.workspace:
   peer2.marketing.workspace:
+  pgdata:
+  walletstore:
 
 networks:
   byfn:
@@ -292,6 +294,17 @@ services:
       - 14051:14051
     networks:
       - byfn
+
+  explorer.workspace:
+    container_name: explorer.workspace
+    extends:
+      file: base.yaml
+      service: explorer-base
+    volumes:
+      - .hyp-explorer-config/config.json:/opt/explorer/app/platform/fabric/config.json
+      - ./connection-profile:/opt/explorer/app/platform/fabric/connection-profile
+      - ./organizations:/tmp/crypto
+      - walletstore:/opt/explorer/wallet
 
 
   cli:

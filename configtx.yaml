@@ -163,6 +163,22 @@ Channel: &ChannelDefaults
         <<: *ChannelCapabilities
 
 Profiles:
+    NetGenesis:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+                    - *Org3
+                    - *Org4
+                    
     FourOrgsChannel:
         Consortium: SampleConsortium
         <<: *ChannelDefaults
@@ -180,6 +196,14 @@ Profiles:
         <<: *ChannelDefaults
         Capabilities:
             <<: *ChannelCapabilities
+        ################################################################################
+        #
+        #   SECTION: Orderer
+        #
+        #   - This section defines the values to encode into a config transaction or
+        #   genesis block for orderer related parameters
+        #
+        ################################################################################
         Orderer:
             <<: *OrdererDefaults
             OrdererType: etcdraft

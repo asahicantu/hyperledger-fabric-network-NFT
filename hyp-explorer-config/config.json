@@ -1,0 +1,9 @@
+{
+    "network-configs": {
+        "explorer-network": {
+            "name": "Explorer Network",
+            "profile": "./network-config.json"
+        }
+    },
+    "license": "Apache-2.0"
+}

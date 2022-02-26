@@ -56,3 +56,9 @@ services:
       - FABRIC_CA_SERVER_TLS_ENABLED=true
     networks:
       - byfn
+
+  explorer-base:
+    image: hyperledger/explorer:$IMAGE_TAG
+    
+    networks:
+      - byfn
